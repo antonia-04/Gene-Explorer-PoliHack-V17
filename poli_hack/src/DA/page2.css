@@ -1,0 +1,188 @@
+body {
+    margin: 0;
+    font-family: 'IBM Plex Mono', monospace;
+    background-color: #f5faff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.middle-section {
+    display: flex;
+    flex: 1;
+    padding: 20px;
+    gap: 20px;
+}
+
+.graph-area {
+    flex: 2;
+    background-color: transparent;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.details-card {
+    width: 250px; /* mai îngust */
+    height: 90%; /* mai înalt */
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-right: 3%;
+}
+
+.details-card h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #1a1a1a;
+  }
+  
+
+.bottom-card {
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin-bottom: 2%;
+    margin-left: 3%;
+    margin-right: 25%;
+    border-radius: 12px;
+}
+  
+  
+  .drug-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+    max-height: 350px;
+    overflow-y: auto;
+    scrollbar-width: none;         /* Firefox */
+    -ms-overflow-style: none;      /* IE 10+ */
+    cursor: pointer;
+
+  }
+  
+  .drug-list li {
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+  }
+
+  .drug-list::-webkit-scrollbar {
+    display: none;                 /* Chrome, Safari */
+  }
+
+  .bottom-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    text-align: left;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin-right: 3%;
+    width: 90%;
+    border-radius: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  
+  .tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  
+  .tabs button {
+    padding: 10px 16px;
+    border: none;
+    background-color: transparent;
+    color: #1a1a1a;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 12px;
+
+  }
+  
+  .tabs button:hover,
+  .tabs button:focus {
+    background-color: #f5faff;
+  }
+  
+  
+  .tab-content {
+    width: 100%;
+    max-width: 800px;
+    text-align: justify;
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    backdrop-filter: blur(4px);
+  }
+  
+  .modal-content {
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    position: relative;
+    animation: slideIn 0.3s ease-out;
+  }
+  
+  .close-modal {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .close-modal:hover {
+    color: #e63946; /* roșu aprins */
+  }
+
+  .modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd; /* linie subtilă gri */
+    font-size: 1.4rem;
+    color: #1a1a1a;
+  }
+  
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(40px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  

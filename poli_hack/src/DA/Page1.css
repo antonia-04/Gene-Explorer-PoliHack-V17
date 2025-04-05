@@ -1,0 +1,109 @@
+.hero-wrapper {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: background 1.2s ease;
+}
+
+/* Fundal video */
+.video-background {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  transition: opacity 1.2s ease;
+}
+
+.video-background video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.6);
+  pointer-events: none;
+}
+
+/* Gradient peste video */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(16, 32, 41) 0%,
+    rgba(16, 32, 41) 20%,
+    rgba(16, 32, 41) 45%,
+    rgba(1, 30, 50, 0.2) 80%,
+    rgba(1, 30, 50, 0) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+  transition: background 1.2s ease;
+}
+
+/* Tranziție la alb complet */
+.hero-wrapper.fade-bg .overlay {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.hero-wrapper.fade-bg .video-background {
+  opacity: 0;
+}
+
+/* Conținut principal */
+.hero-content {
+  z-index: 2;
+  color: white;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 20px;
+  transition: transform 1s ease, color 1s ease, opacity 0.8s ease;
+  margin-top: -350px;
+}
+
+.hero-content.move-up {
+  transform: translateY(-150px);
+}
+
+.hero-wrapper.fade-bg .hero-content {
+  color: #1a1a1a;
+}
+
+/* Fade out pe titlu și subtitlu */
+.fade-title,
+.fade-subtitle {
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.hero-content h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.hero-content p {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  color: #ccc;
+}
+
+.hero-wrapper.fade-bg .hero-content p {
+  color: #444;
+}
+
+
+
