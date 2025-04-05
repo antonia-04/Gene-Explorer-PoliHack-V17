@@ -9,8 +9,14 @@ body {
     flex-direction: column;
     min-height: 100vh;
     background-color: #f5faff;
-
 }
+
+html, body {
+  overflow: hidden;
+  height: 100%;
+}
+
+
 
 .middle-section {
     display: flex;
@@ -77,6 +83,8 @@ body {
     display: none;                 /* Chrome, Safari */
   }
 
+
+  
   .bottom-card {
     display: flex;
     flex-direction: column;

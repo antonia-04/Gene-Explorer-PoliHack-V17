@@ -17,7 +17,7 @@ code {
 }
 
 .page2-enter {
-  animation: fadeAndSlideIn 1.5s ease forwards;
+  animation: fadeAndSlideIn 0.9s ease forwards;
   z-index: 10;
 }
 
@@ -39,7 +39,7 @@ code {
   display: flex;
   justify-content: center;
   z-index: 100;
-  transition: transform 1s ease, top 1s ease;
+  transition: transform 0.5s ease, top 0.8s ease;
 }
 
 .search-bar-wrapper.float-up {
