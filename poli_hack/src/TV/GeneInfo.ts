@@ -1,4 +1,4 @@
-export async function getGeneInfo(gene: String) {
+export async function getGeneInfo(gene: String): Promise<any> {
     const BASE_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/";
 
     try {
@@ -54,17 +54,17 @@ export async function getGeneInfo(gene: String) {
     }
 }
 
-// Example usage:
-getGeneInfo("BRCA1").then((getters) => {
-    if (getters) {
-        console.log("Gene Name:", getters.getName());
-        console.log("Nomenclature Name:", getters.getNomenclatureName());
-        console.log("Summary:", getters.getSummary());
-        console.log("Other Designations:", getters.getOtherDesignations());
-        console.log("Genetic Source:", getters.getGeneticSource());
-        console.log("Map Location:", getters.getMapLocation());
-        console.log("Other Aliases:", getters.getOtherAliases());
+export function generateGeneList(input: string, geneNames: any): string[] {
+    const result: string[] = [];
+
+    // Verifică dacă geneNames este un array valid
+    if (Array.isArray(geneNames)) {
+        geneNames.forEach(gene => {
+            result.push(input, "Similar", gene);
+        });
     } else {
-        console.log("Gene not found or error occurred.");
+        console.error("Eroare: geneNames nu este un array valid.");
     }
-});
+
+    return result;
+}

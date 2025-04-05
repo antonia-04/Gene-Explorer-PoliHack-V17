@@ -4,6 +4,7 @@ import Page2 from './Page2';
 import { getGeneInfo } from '../TV/GeneInfo';
 import { getTop20GeneInteractions } from '../TV/GenetoDrugDetails';
 import Chatbot from './Chatbot';
+import {getGraphData} from "../TV/GraphData";
 
 function App() {
   const [showPage2, setShowPage2] = useState(false);
@@ -11,6 +12,7 @@ function App() {
   const [gene, setGene] = useState('');
   const [geneInfo, setGeneInfo] = useState(null);
   const [drugs, setDrugs] = useState([]);
+  const [graph, setGraph] = useState([]);
 
   const [isLoading, setIsLoading] = useState(false);
   const [isInitialSearchDone, setIsInitialSearchDone] = useState(false);
@@ -27,6 +29,8 @@ function App() {
 
         const interactions = await getTop20GeneInteractions(gene);
         const info = await getGeneInfo(gene);
+        const graphData = await getGraphData(gene);
+        setGraph(graphData);
         setDrugs(interactions);
         setGeneInfo(info);
         setShowPage2(true);

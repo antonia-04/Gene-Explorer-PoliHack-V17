@@ -38,11 +38,11 @@ export async function getTop20GeneInteractions(gene: string) {
             .sort((a: any, b: any) => b.interactionScore - a.interactionScore)
             .slice(0, 20);
 
-        top5.forEach((interaction: any, index: number) => {
-            console.log(
-                `${index + 1}. Drug: ${interaction.drug.name}, Score: ${interaction.interactionScore}`
-            );
-        });
+        // top5.forEach((interaction: any, index: number) => {
+        //     console.log(
+        //         `${index + 1}. Drug: ${interaction.drug.name}, Score: ${interaction.interactionScore}`
+        //     );
+        // });
 
         return top5;
     } catch (error) {
@@ -52,4 +52,4 @@ export async function getTop20GeneInteractions(gene: string) {
 }
 
 // 🔬 Example usage:
-getTop20GeneInteractions("BRAF");
+// getTop20GeneInteractions("BRAF");

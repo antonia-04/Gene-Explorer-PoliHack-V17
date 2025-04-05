@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './page2.css';
+import {getGeneInfo} from "../TV/GeneInfo";
+import {getGraphData} from "../TV/GraphData";
 
 const dummyDrugs = Array.from({ length: 15 }, (_, i) => ({
   name: `Drug${i + 1}`,
@@ -10,8 +12,6 @@ function Page2({ gene, geneInfo, drugs }) {
   const [activeTab, setActiveTab] = useState('general');
   const [selectedDrug, setSelectedDrug] = useState(null);
   const [showModal, setShowModal] = useState(false);
-
-
 
   const renderBottomContent = () => {
     if (!geneInfo) {
@@ -53,7 +53,6 @@ function Page2({ gene, geneInfo, drugs }) {
         return null;
     }
   };
-  
   
   return (
     <div className="container page2-enter">
