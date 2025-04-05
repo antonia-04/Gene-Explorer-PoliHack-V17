@@ -85,10 +85,10 @@ function Page2({ gene, geneInfo, drugs }) {
       {/* Tabs bottom */}
       <footer className="bottom-card">
       <div className="tabs">
-  <button onClick={() => setActiveTab('general')}>General Info</button>
-  <button onClick={() => setActiveTab('purpose')}>Purpose</button>
-  <button onClick={() => setActiveTab('genetic')}>Genetic Info & Map Location</button>
-  <button onClick={() => setActiveTab('similar')}>Related Genes</button>
+  <button onClick={() => setActiveTab('general')}><strong>General Info</strong></button>
+  <button onClick={() => setActiveTab('purpose')}><strong>Purpose</strong></button>
+  <button onClick={() => setActiveTab('genetic')}><strong>Genetic Info & Map Location</strong></button>
+  <button onClick={() => setActiveTab('similar')}><strong>Related Genes</strong></button>
 </div>
 
         <div className="tab-content">

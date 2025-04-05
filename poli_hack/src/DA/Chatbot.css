@@ -1,0 +1,163 @@
+ 
+/* Buton plutitor cu iconiță rotundă */
+.chatbot-button {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background-color: #ffffff;
+    border: 2px solid #00e0e0;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0;
+  }
+  
+  .chatbot-button img {
+    width: 145%;
+    height: 145%;
+    object-fit: cover;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  
+  /* Fereastra chatbot */
+  .chatbot-window {
+    position: fixed;
+    bottom: 80px;
+    right: 80px;
+    width: 330px;
+    max-height: 400px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  /* Header + buton X */
+  .chatbot-header {
+    background-color: #00e0e0;
+    padding: 12px 16px;
+    color: #1a1a1a;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .chatbot-close {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.3s ease;
+  }
+  
+  .chatbot-close:hover {
+    color: #ff4d4d;
+  }
+  
+  /* Zona de mesaje */
+  .chatbot-body {
+    padding: 12px;
+    flex: 1;
+    overflow-y: auto;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  
+  .msg-text {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    max-width: 85%;
+    word-wrap: break-word;
+    font-size: 0.75rem;
+  }
+  
+  .msg-text.user {
+    background-color: #f0f0f0;
+    color: #333;
+    float: right;
+    clear: both;
+  }
+  
+  .msg-text.bot {
+    background-color: #e6fcfc;
+    color: #1a1a1a;
+    float: left;
+    clear: both;
+  }
+  
+  /* Input-ul de jos */
+  .chatbot-input {
+    display: flex;
+    border-top: 1px solid #eee;
+  }
+  
+  .chatbot-input input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  
+  .chatbot-input button {
+    background-color: #00e0e0;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .chatbot-input input:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+  }
+  
+ 
+
+  .formatted {
+    font-size: 0.75rem;
+    color: #1a1a1a;
+    line-height: 1.4;
+  }
+  
+  .formatted h3 {
+    font-size: 0.8rem;
+    margin: 0.5rem 0 0.25rem;
+    font-weight: 600;
+    color: #1e40af;
+  }
+  
+  .formatted p {
+    margin: 0.25rem 0;
+  }
+  
+  .formatted ol {
+    padding-left: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .formatted li {
+    font-size: 0.7rem;
+    color: #444;
+  }
+  
+  

@@ -3,10 +3,7 @@ import Page1 from './Page1';
 import Page2 from './Page2';
 import { getGeneInfo } from '../TV/GeneInfo';
 import { getTop20GeneInteractions } from '../TV/GenetoDrugDetails';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass, faArrowDown } from '@fortawesome/free-solid-svg-icons';
-
-
+import Chatbot from './Chatbot';
 
 function App() {
   const [showPage2, setShowPage2] = useState(false);
@@ -73,7 +70,6 @@ function App() {
           <button className="search-button" onClick={handleSearchClick}>
             {startTransition ? '⌕' : '↓'}
           </button>
-
         </div>
       </div>
 
@@ -98,6 +94,10 @@ function App() {
           </div>
         )}
       </div>
+
+      {showPage2 && <Chatbot/>}
+      
+
     </>
   );
 }
