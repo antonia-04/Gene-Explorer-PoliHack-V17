@@ -41,7 +41,7 @@ body {
     flex: 2;
     background-color: transparent;
     border-radius: 12px;
-    padding: 20px;
+    /*padding: 20px;*/
 }
 
 .details-card {
@@ -201,5 +201,6 @@ body {
       opacity: 1;
     }
   }
+
   
   

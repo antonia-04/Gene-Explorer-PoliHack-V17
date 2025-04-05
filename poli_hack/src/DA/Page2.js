@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './page2.css';
 import {getGeneInfo} from "../TV/GeneInfo";
 import {getGraphData} from "../TV/GraphData";
+import MyGraph from "../TV/MyGraph";
 
 const dummyDrugs = Array.from({ length: 15 }, (_, i) => ({
   name: `Drug${i + 1}`,
@@ -60,7 +61,7 @@ function Page2({ gene, geneInfo, drugs }) {
       {/* Middle */}
       <main className="middle-section">
         <section className="graph-area" id="graphArea">
-          {/* viitor graf */}
+          <MyGraph/>
         </section>
 
         <section className="details-card">
