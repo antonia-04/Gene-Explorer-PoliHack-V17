@@ -9,11 +9,23 @@ body {
     flex-direction: column;
     min-height: 100vh;
     background-color: #f5faff;
+    
 }
 
-html, body {
-  overflow: hidden;
-  height: 100%;
+/* Face scrollbarul alb (invizibil) pe Chrome/Safari */
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;  /* fundal scrollbar invizibil */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;  /* bara în sine invizibilă */
+}
+
+/* Pentru Firefox */
+body {
+  scrollbar-width: none;           /* bara ascunsă */
+  -ms-overflow-style: none;        /* pentru IE */
 }
 
 

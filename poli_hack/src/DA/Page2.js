@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './page2.css';
-import { getGeneInfo } from '../TV/GeneInfo';
-import { getTop20GeneInteractions } from '../TV/GenetoDrugDetails';
 
 const dummyDrugs = Array.from({ length: 15 }, (_, i) => ({
   name: `Drug${i + 1}`,
@@ -24,22 +22,33 @@ function Page2({ gene, geneInfo, drugs }) {
       case 'general':
         return (
           <div>
-            <h3><strong>{gene.toUpperCase()}</strong></h3>
-            <p><strong>Nomenclature Name:</strong> {geneInfo.getNomenclatureName()}</p>
-            <p><strong>Summary:</strong> {geneInfo.getSummary()}</p>
+            <h3><strong>{gene?.toUpperCase?.() || 'Unknown Gene'}</strong></h3>
+            <p><strong>Nomenclature Name:</strong> {geneInfo?.getNomenclatureName?.() || 'N/A'}</p>
+            <p><strong>Summary:</strong> {geneInfo?.getSummary?.() || 'No summary available.'}</p>
           </div>
         );
+  
       case 'purpose':
-        return <p> Used in cancer treatment and gene expression regulation.</p>;
+        return (
+          <p>
+            {/* Fallback la un mesaj standard dacă nu ai o funcție specifică */}
+            Used in cancer treatment and gene expression regulation.
+          </p>
+        );
+  
       case 'genetic':
         return (
           <>
-            <p ><strong>Genetic Source:</strong> {geneInfo.getGeneticSource()}</p>
-            <p><strong>Map Location:</strong> {geneInfo.getMapLocation()}</p>
+            <p><strong>Genetic Source:</strong> {geneInfo?.getGeneticSource?.() || 'N/A'}</p>
+            <p><strong>Map Location:</strong> {geneInfo?.getMapLocation?.() || 'N/A'}</p>
           </>
         );
+  
       case 'similar':
-        return <p>{geneInfo.getOtherAliases()}</p>;
+        return (
+          <p>{geneInfo?.getOtherAliases?.() || 'No related genes found.'}</p>
+        );
+  
       default:
         return null;
     }
@@ -63,9 +72,8 @@ function Page2({ gene, geneInfo, drugs }) {
       setSelectedDrug(interaction);
       setShowModal(true);
     }}>
-      <strong>{interaction.drug.name}</strong><br />
-
-      Score: {interaction.interactionScore.toFixed(2)}
+    <strong>{interaction?.drug?.name || 'Unknown Drug'}</strong><br />
+    Score: {interaction?.interactionScore?.toFixed?.(2) || 'N/A'}
     </li>
   ))}
 </ul>
@@ -88,21 +96,34 @@ function Page2({ gene, geneInfo, drugs }) {
         </div>
       </footer>
       {showModal && selectedDrug && (
-  <div className="modal-overlay" onClick={() => setShowModal(false)}>
-    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-      <button className="close-modal" onClick={() => setShowModal(false)}>×</button>
-      <h2>{selectedDrug.drug.name}</h2>
-      <p><strong>Interaction Score:</strong> {selectedDrug.interactionScore.toFixed(2)}</p>
-      <p><strong>Status:</strong> Experimental / Predicted by DGIdb</p>
-      <p><strong>Recommended for:</strong> Gene <strong>{gene.toUpperCase()}</strong></p>
-    </div>
-  </div>
-)}
-
+        <div className="modal-overlay" onClick={() => setShowModal(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="close-modal" onClick={() => setShowModal(false)}>×</button>
+            
+            <h2>{selectedDrug?.drug?.name || 'Unknown Drug'}</h2>
+            
+            <p>
+              <strong>Interaction Score:</strong>{' '}
+              {selectedDrug?.interactionScore?.toFixed?.(2) || 'N/A'}
+            </p>
+            
+            <p><strong>Status:</strong> Experimental / Predicted by DGIdb</p>
+            
+            <p>
+              <strong>Recommended for:</strong> Gene{' '}
+              <strong>{gene?.toUpperCase?.() || 'N/A'}</strong>
+            </p>
+          </div>
+        </div>
+      )}
 
     </div>
     
+
+
   );
+
+  
 }
 
 export default Page2;

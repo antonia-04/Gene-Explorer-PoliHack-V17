@@ -3,6 +3,10 @@ import Page1 from './Page1';
 import Page2 from './Page2';
 import { getGeneInfo } from '../TV/GeneInfo';
 import { getTop20GeneInteractions } from '../TV/GenetoDrugDetails';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+
+
 
 function App() {
   const [showPage2, setShowPage2] = useState(false);
@@ -11,18 +15,38 @@ function App() {
   const [geneInfo, setGeneInfo] = useState(null);
   const [drugs, setDrugs] = useState([]);
 
-  const handleSearchClick = () => {
-    setStartTransition(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isInitialSearchDone, setIsInitialSearchDone] = useState(false);
 
-    // Așteaptă finalul tranziției (sincron cu animația)
-    setTimeout(async () => {
+
+  const handleSearchClick = async () => {
+    if (!isInitialSearchDone) {
+      setStartTransition(true);
+  
+      setTimeout(async () => {
+        setIsLoading(true);
+        setGeneInfo(null);
+        setDrugs([]);
+
+        const interactions = await getTop20GeneInteractions(gene);
+        const info = await getGeneInfo(gene);
+        setDrugs(interactions);
+        setGeneInfo(info);
+        setShowPage2(true);
+        setIsLoading(false);
+        setIsInitialSearchDone(true); // ✅ activat doar după prima tranziție
+      }, 1000);
+    } else {
+      setIsLoading(true);
       const interactions = await getTop20GeneInteractions(gene);
       const info = await getGeneInfo(gene);
       setDrugs(interactions);
       setGeneInfo(info);
-      setShowPage2(true);
-    }, 1000);
+      setIsLoading(false);
+    }
   };
+  
+  
 
   return (
     <>
@@ -41,17 +65,25 @@ function App() {
         <div className="search-bar match-style">
           <input
             type="text"
-            placeholder="Search gene, disease or drug..."
+            placeholder="Search gene . . ."
             className="search-input"
             value={gene}
             onChange={(e) => setGene(e.target.value)}
           />
           <button className="search-button" onClick={handleSearchClick}>
-            {startTransition ? '→' : '↓'}
+            {startTransition ? '⌕' : '↓'}
           </button>
 
         </div>
       </div>
+
+      {isLoading && isInitialSearchDone && (
+      <div className="loading-overlay">
+        <div className="loading-spinner">Loading...</div>
+      </div>
+    )}
+
+
 
       <div className={`app-wrapper ${startTransition ? 'fade-to-white' : ''}`}>
         {!showPage2 ? (
