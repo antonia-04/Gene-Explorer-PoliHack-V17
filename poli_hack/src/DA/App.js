@@ -35,7 +35,7 @@ function App() {
         setGeneInfo(info);
         setShowPage2(true);
         setIsLoading(false);
-        setIsInitialSearchDone(true); // ✅ activat doar după prima tranziție
+        setIsInitialSearchDone(true);
       }, 1000);
     } else {
       setIsLoading(true);

@@ -9,10 +9,8 @@ export async function getGraphData(geneInput: string) {
     try {
         // Obține codul genei utilizând funcția getKeggGeneCode
         let geneCodes = await getKeggGeneCodes(geneInput); // Așteptăm să obținem rezultatul
-        console.log(geneCodes)
 
         const geneNetworks2 = geneCodes.map(code => getNetworkForGene(code));
-        console.log(geneNetworks2)
         // Obține rețelele pentru gena respectivă
 
 
@@ -30,7 +28,6 @@ export async function getGraphData(geneInput: string) {
 
         // Parcurge fiecare element din rețelele de gene și aplică funcția getNetworkGeneSymbols
         for (let value of geneNetworks) {
-            console.log(value)
             let geneSymbols = await getNetworkGeneSymbols(value);
             if (geneSymbols) {
                 allGeneSymbols.push(geneSymbols); // "Platizează" lista (adaugă toate simbolurile la lista principală)

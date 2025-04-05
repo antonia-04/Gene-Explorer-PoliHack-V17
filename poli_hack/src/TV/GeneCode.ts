@@ -1,7 +1,8 @@
 
 export async function getKeggGeneCodes(geneName: string): Promise<string[]> {
     try {
-        const response = await fetch(`http://localhost:3001/api/kegg-genes/${geneName}`);
+        const response = await fetch(`http://localhost:3009/api/kegg-genesCode/${geneName}`);
+        // const response = await fetch(`http://localhost:3001/api/kegg-genes/${geneName}`);
         if (!response.ok) {
             throw new Error("Failed to fetch KEGG data from backend");
         }

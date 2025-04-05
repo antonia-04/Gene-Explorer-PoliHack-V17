@@ -9,7 +9,7 @@ const port = 3003;  // Proxy server runs on port 3002
 app.use(cors());
 
 // Route to handle the request to fetch KEGG network data
-app.get('/api/kegg-network/:networkCode', async (req, res) => {
+app.get('/api/kegg-genes/:networkCode', async (req, res) => {
     const { networkCode } = req.params;  // Extract networkCode from the request URL
     const keggUrl = `https://rest.kegg.jp/get/${networkCode}`;  // KEGG API URL
 

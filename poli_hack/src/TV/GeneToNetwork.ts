@@ -4,11 +4,10 @@ import * as path from "path";
 export async function getNetworkForGene(geneCode: any): Promise<string[]> {
     // const BASE_URL = "https://rest.kegg.jp/";
     // const BASE_URL = "http://localhost:3002/api/kegg-genes/";  // Proxy URL
-    const BASE_URL = "http://localhost:3002/api/kegg-genes/";
+    const BASE_URL = "http://localhost:3009/api/kegg-network/";
 
     try {
         const pathwaysUrl = `${BASE_URL}${geneCode}`;
-        console.log(pathwaysUrl)
         const pathwaysResponse = await fetch(pathwaysUrl);
 
         if (!pathwaysResponse.ok) {

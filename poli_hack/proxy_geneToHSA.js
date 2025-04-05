@@ -30,7 +30,6 @@ app.get('/api/kegg-genes/:geneName', async (req, res) => {
     }
 });
 
-
 app.listen(PORT, () => {
     console.log(`🚀 Backend running at http://localhost:${PORT}`);
 });
