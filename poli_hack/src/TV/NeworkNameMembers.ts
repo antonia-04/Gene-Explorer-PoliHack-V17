@@ -5,48 +5,53 @@ export async function getNetworkGeneSymbols(networkCode: any): Promise<any> {
 
     const symbolToInteraction: Record<string, string> = {
         '->': 'Activation',
-        '+': 'Activation', // '+' înlocuit cu 'creștere' mai târziu
+        '+': 'Activation',
         '-|': 'Inhibition',
         '==': 'Complex formation',
-        '⌿': 'Missing interaction or reaction',
-        '⇒': 'Expression',
-        '⫤': 'Repression',
-        '—': 'Substrate binding to enzyme or transporter',
-        '→': 'Enzymatic reaction or transport process',
-        '⇉': 'Enzyme-enzyme relation of successive reactions',
+        '//': 'Missing interaction',
+        '=>': 'Expression',
+        '=|': 'Repression',
+        '-': 'Substrate binding to enzyme or transporter',
+        '>>': 'Enzyme-enzyme relation of successive reactions',
     };
 
     try {
         const response = await fetch(url);
         if (!response.ok) {
-            console.error(`❌ Eroare la fetch pentru ${networkCode}`);
+            // console.error("❌ Eroare la fetch pentru " + ${networkCode});
             return null;
         }
 
         const text = await response.text();
         const definitionMatch = text.match(/^DEFINITION\s+(.+)$/m);
-        const definition = definitionMatch ? definitionMatch[1].trim() : '';
+        let definition = definitionMatch ? definitionMatch[1].trim() : '';
         if (!definition) return [];
 
-        // Înlocuim '+' cu ' creștere ' (cu spații înainte și după)
-        let modifiedDefinition = definition.replace(/\+/g, ' + ');
+        // 🧼 Elimină parantezele rotunde
+        definition = definition.replace(/[()]/g, '');
 
-        // Separa cuvintele pe baza spațiilor
+        // 🔁 Înlocuiește simbolul '+' cu spațiu pentru delimitare
+        let modifiedDefinition1 = definition.replace(/\+(?=[a-zA-Z])/g, ' + ');
+        let modifiedDefinition = modifiedDefinition1.replace(/,/g, ' + ');
+
+        // 🧩 Tokenizează pe spațiu
         const tokens = modifiedDefinition.split(/\s+/);
         const triplets: string[] = [];
 
+        console.log("🧬 Relații extrase din rețea pentru ${networkCode}:\n");
 
         for (let i = 0; i < tokens.length - 2; i += 2) {
             let source = tokens[i];
             let symbol = tokens[i + 1];
 
-            // Verificăm și înlocuim simbolurile pentru interacțiuni
-                symbol = symbolToInteraction[symbol] || 'Edge';
+            symbol = symbolToInteraction[symbol] || 'Edge';
 
-            // Adăugăm tripletul
             triplets.push(source, symbol);
         }
+
+        // Adaugă ultimul element (target final)
         triplets.push(tokens[tokens.length - 1]);
+
         return triplets;
     } catch (error) {
         console.error('🔥 Eroare în timpul procesării KEGG:', error);

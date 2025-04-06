@@ -9,7 +9,7 @@ const dummyDrugs = Array.from({ length: 15 }, (_, i) => ({
   score: (Math.random() * 0.5 + 0.5).toFixed(2)
 }));
 
-function Page2({ gene, geneInfo, drugs }) {
+function Page2({ gene, geneInfo, drugs, graphJSON, setNodeFromGraph }) {
   const [activeTab, setActiveTab] = useState('general');
   const [selectedDrug, setSelectedDrug] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -61,7 +61,10 @@ function Page2({ gene, geneInfo, drugs }) {
       {/* Middle */}
       <main className="middle-section">
         <section className="graph-area" id="graphArea">
-          <MyGraph/>
+          <MyGraph
+            jsonData={graphJSON}
+            targetNode={gene}
+            setNodeFromGraph={setNodeFromGraph}/>
         </section>
 
         <section className="details-card">

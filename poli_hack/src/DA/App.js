@@ -5,6 +5,7 @@ import { getGeneInfo } from '../TV/GeneInfo';
 import { getTop20GeneInteractions } from '../TV/GenetoDrugDetails';
 import Chatbot from './Chatbot';
 import {getGraphData} from "../TV/GraphData";
+import async from "async";
 
 function App() {
   const [showPage2, setShowPage2] = useState(false);
@@ -12,7 +13,7 @@ function App() {
   const [gene, setGene] = useState('');
   const [geneInfo, setGeneInfo] = useState(null);
   const [drugs, setDrugs] = useState([]);
-  const [graph, setGraph] = useState([]);
+  const [graphJSON, setGraphJSON] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
   const [isInitialSearchDone, setIsInitialSearchDone] = useState(false);
@@ -21,32 +22,117 @@ function App() {
   const handleSearchClick = async () => {
     if (!isInitialSearchDone) {
       setStartTransition(true);
-  
+
+      // 🧠 Tranzitia vizuala
       setTimeout(async () => {
         setIsLoading(true);
         setGeneInfo(null);
         setDrugs([]);
 
+        // 🔍 Fetch complet
         const interactions = await getTop20GeneInteractions(gene);
         const info = await getGeneInfo(gene);
         const graphData = await getGraphData(gene);
-        setGraph(graphData);
+        // await fetchExtraData(gene, info);
+
+        setGraphJSON(graphData);
         setDrugs(interactions);
         setGeneInfo(info);
+
         setShowPage2(true);
         setIsLoading(false);
-        setIsInitialSearchDone(true);
+        setIsInitialSearchDone(true); // 🔓 Cautare ulterioara fara animatie
       }, 1000);
     } else {
+      // 🔁 Căutări ulterioare, fără animație dar cu fetch complet
       setIsLoading(true);
+
       const interactions = await getTop20GeneInteractions(gene);
       const info = await getGeneInfo(gene);
+      const graphData = await getGraphData(gene);
+      // await fetchExtraData(gene, info);
+
+      setGraphJSON(graphData);
       setDrugs(interactions);
       setGeneInfo(info);
+
       setIsLoading(false);
     }
   };
-  
+
+  const setNodeFromGraph = async (name) => {
+    if (!isInitialSearchDone) {
+      setGene(name);
+      setStartTransition(true);
+
+      // 🧠 Tranzitia vizuala
+      setTimeout(async () => {
+        setIsLoading(true);
+        setGeneInfo(null);
+        setDrugs([]);
+
+        // 🔍 Fetch complet
+        const interactions = await getTop20GeneInteractions(name);
+        const info = await getGeneInfo(name);
+        const graphData = await getGraphData(name);
+        // await fetchExtraData(gene, info);
+
+        setGraphJSON(graphData);
+        setDrugs(interactions);
+        setGeneInfo(info);
+        setGene(name)
+
+        setShowPage2(true);
+        setIsLoading(false);
+        setIsInitialSearchDone(true); // 🔓 Cautare ulterioara fara animatie
+      }, 1000);
+    } else {
+      // 🔁 Căutări ulterioare, fără animație dar cu fetch complet
+      setIsLoading(true);
+
+      const interactions = await getTop20GeneInteractions(name);
+      const info = await getGeneInfo(name);
+      const graphData = await getGraphData(name);
+      // await fetchExtraData(gene, info);
+
+      setGraphJSON(graphData);
+      setDrugs(interactions);
+      setGeneInfo(info);
+      setGene(name)
+
+      setIsLoading(false);
+    }
+  }
+
+  // const handleSearchClick = async () => {
+  //   if (!isInitialSearchDone) {
+  //     setStartTransition(true);
+  //
+  //     setTimeout(async () => {
+  //       setIsLoading(true);
+  //       setGeneInfo(null);
+  //       setDrugs([]);
+  //
+  //       const interactions = await getTop20GeneInteractions(gene);
+  //       const info = await getGeneInfo(gene);
+  //       const graphData = await getGraphData(gene);
+  //       setGraph(graphData);
+  //       setDrugs(interactions);
+  //       setGeneInfo(info);
+  //       setShowPage2(true);
+  //       setIsLoading(false);
+  //       setIsInitialSearchDone(true);
+  //     }, 1000);
+  //   } else {
+  //     setIsLoading(true);
+  //     const interactions = await getTop20GeneInteractions(gene);
+  //     const info = await getGeneInfo(gene);
+  //     setDrugs(interactions);
+  //     setGeneInfo(info);
+  //     setIsLoading(false);
+  //   }
+  // };
+  //
   
 
   return (
@@ -94,6 +180,8 @@ function App() {
               gene={gene}
               geneInfo={geneInfo}
               drugs={drugs}
+              graphJSON={graphJSON}
+              setNodeFromGraph={setNodeFromGraph}
             />
           </div>
         )}
