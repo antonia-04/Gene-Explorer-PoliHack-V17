@@ -25,7 +25,7 @@ app.get('/api/kegg-genesCode/:geneName', async (req, res) => {
 
         res.json(filteredGeneCodes);
     } catch (err) {
-        console.error("❌ Backend error:", err);
+        console.error("Backend error:", err);
         res.status(500).json({ error: "Error fetching data from KEGG" });
     }
 });
@@ -71,5 +71,5 @@ app.get('/api/kegg-symbol/:networkCode', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`🚀 Backend running at http://localhost:${PORT}`);
+    console.log(`Backend running at http://localhost:${PORT}`);
 });
