@@ -7,8 +7,8 @@
     background-color: #ffffff;
     border: 2px solid #00e0e0;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     z-index: 1000;
@@ -31,10 +31,10 @@
   /* Fereastra chatbot */
   .chatbot-window {
     position: fixed;
-    bottom: 80px;
-    right: 80px;
-    width: 330px;
-    max-height: 400px;
+    bottom: 100px;
+    right: 90px;
+    width: 450px;
+    max-height: 600px;
     background-color: white;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
@@ -54,13 +54,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 1.4rem;
+
   }
   
   .chatbot-close {
     background: none;
     border: none;
     color: #333;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     cursor: pointer;
     padding: 0;
     line-height: 1;
@@ -86,7 +88,7 @@
     margin-bottom: 8px;
     max-width: 85%;
     word-wrap: break-word;
-    font-size: 0.75rem;
+    font-size: 1rem;
   }
   
   .msg-text.user {

@@ -11,7 +11,7 @@ export async function getNetworkForGene(geneCode: any): Promise<string[]> {
         const pathwaysResponse = await fetch(pathwaysUrl);
 
         if (!pathwaysResponse.ok) {
-            console.error(`❌ Failed to fetch data for ${geneCode}`);
+            console.error(`Failed to fetch data for ${geneCode}`);
             return [];
         }
 
@@ -21,14 +21,13 @@ export async function getNetworkForGene(geneCode: any): Promise<string[]> {
         const matches = pathwaysData.match(/\bN0\d{4}\b/g);
 
         if (!matches || matches.length === 0) {
-            console.log("ℹ️ Niciun cod N0 găsit.");
             return [];
         }
 
         return matches;
 
     } catch (error) {
-        console.error("🔥 Eroare la fetch sau parsing KEGG:", error);
+        console.error("Eroare la fetch sau parsing KEGG:", error);
         return [];
     }
 }

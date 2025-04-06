@@ -60,6 +60,8 @@ function App() {
     }
   };
 
+
+
   const setNodeFromGraph = async (name) => {
     if (!isInitialSearchDone) {
       setGene(name);

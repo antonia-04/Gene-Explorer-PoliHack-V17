@@ -119,24 +119,46 @@ const MyGraph = ({ jsonData, targetNode, setNodeFromGraph }) => {
 
     if (!data) return <div>Loading graph...</div>;
 
+    // return (
+    //     <ForceGraph3D
+    //         ref={fgRef}
+    //         graphData={data}
+    //         nodeLabel="id"
+    //         linkLabel="value"
+    //         nodeAutoColorBy="group"
+    //         linkAutoColorBy="value"
+    //         onNodeClick={handleClick}
+    //         backgroundColor="#f5faff"
+    //         linkWidth={0.5}
+    //         linkOpacity={0.7}
+    //         linkDirectionalArrowLength={3.5}
+    //         linkDirectionalArrowRelPos={1}
+    //         width={1500}
+    //         height={800}
+    //
+    //     />
+    // );
+
     return (
-        <ForceGraph3D
-            ref={fgRef}
-            graphData={data}
-            nodeLabel="id"
-            linkLabel="value"
-            nodeAutoColorBy="group"
-            linkAutoColorBy="value"
-            onNodeClick={handleClick}
-            backgroundColor="#f5faff"
-            linkWidth={0.5}
-            linkOpacity={0.7}
-            linkDirectionalArrowLength={3.5}
-            linkDirectionalArrowRelPos={1}
-            width={1500}
-            height={800}
-        />
+            <ForceGraph3D
+                ref={fgRef}
+                graphData={data}
+                nodeLabel="id"
+                linkLabel="value"
+                nodeAutoColorBy="group"
+                linkAutoColorBy="value"
+                onNodeClick={handleClick}
+                backgroundColor="#f5faff"
+                linkWidth={0.5}
+                linkOpacity={0.7}
+                linkDirectionalArrowLength={3.5}
+                linkDirectionalArrowRelPos={1}
+                width={1500}
+                height={700}
+            />
     );
+
+
 };
 
 export default MyGraph;

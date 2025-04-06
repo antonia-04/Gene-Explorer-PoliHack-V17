@@ -42,9 +42,8 @@ export async function getGraphData(geneInput: string) {
             allGeneSymbols.push(similarList);
             console.log("🔁 Simboluri ale genelor extrase:", allGeneSymbols);
         }
-        //return allGeneSymbols;
-        // const normalized = normalizeGeneData(allGeneSymbols);
-        // return normalized;
+
+
 
         let geneGroup: { [key: string]: number } = {};
         let nodes: { id: string, group: number }[] = [];
@@ -54,8 +53,18 @@ export async function getGraphData(geneInput: string) {
         allGeneSymbols.forEach((array: string[], groupIndex: number) => {
             array.forEach((gene, index) => {
                 // If the gene is not a relationship term, add it to the nodes (if it hasn't been added yet)
-                if (gene !== "Complex formation" && gene !== "Activation" && gene !== "Similar" && gene !== "Inhibition") {
-                    // Check if the gene has been added before
+                if (gene !== "Complex formation" &&
+                    gene !== "Activation" &&
+                    gene !== "Similar" &&
+                    gene !== "Inhibition" &&
+                    gene !== "Missing interaction" &&
+                    gene !== "Expression" &&
+                    gene !== "Repression" &&
+                    gene !== "Substrate binding to enzyme or transporter" &&
+                    gene !== "Enzyme-enzyme relation of successive reactions" &&
+                    gene !== "Starting point in a metabolic pathway") {
+
+                // Check if the gene has been added before
                     if (!addedGenes.has(gene)) {
                         addedGenes.add(gene);  // Mark the gene as added
                         geneGroup[gene] = groupIndex;  // Assign the group index to the gene
@@ -71,9 +80,38 @@ export async function getGraphData(geneInput: string) {
 
                     // Ensure the source and target are genes, and the relationship is valid
                     if (
-                        sourceGene !== "Complex formation" && sourceGene !== "Activation" && sourceGene !== "Similar" && sourceGene !== "Inhibition" &&
-                        targetGene !== "Complex formation" && targetGene !== "Activation" && targetGene !== "Similar" && targetGene !== "Inhibition" &&
-                        (relationship === "Complex formation" || relationship === "Activation" || relationship === "Similar" || relationship === "Inhibition")
+                        sourceGene !== "Complex formation" &&
+                        sourceGene !== "Activation" &&
+                        sourceGene !== "Similar" &&
+                        sourceGene !== "Inhibition" &&
+                        sourceGene !== "Missing interaction" &&
+                        sourceGene !== "Expression" &&
+                        sourceGene !== "Repression" &&
+                        sourceGene !== "Substrate binding to enzyme or transporter" &&
+                        sourceGene !== "Enzyme-enzyme relation of successive reactions" &&
+                        sourceGene !== "Starting point in a metabolic pathway" &&
+
+                        targetGene !== "Complex formation" &&
+                        targetGene !== "Activation" &&
+                        targetGene !== "Similar" &&
+                        targetGene !== "Inhibition" &&
+                        targetGene !== "Missing interaction" &&
+                        targetGene !== "Expression" &&
+                        targetGene !== "Repression" &&
+                        targetGene !== "Substrate binding to enzyme or transporter" &&
+                        targetGene !== "Enzyme-enzyme relation of successive reactions" &&
+                        targetGene !== "Starting point in a metabolic pathway" &&
+
+                        (relationship === "Complex formation" ||
+                            relationship === "Activation" ||
+                            relationship === "Similar" ||
+                            relationship === "Inhibition" ||
+                            relationship === "Missing interaction" ||
+                            relationship === "Expression" ||
+                            relationship === "Repression" ||
+                            relationship === "Substrate binding to enzyme or transporter" ||
+                            relationship === "Enzyme-enzyme relation of successive reactions" ||
+                            relationship === "Starting point in a metabolic pathway")
                     ) {
                         links.push({
                             source: sourceGene,
@@ -81,6 +119,7 @@ export async function getGraphData(geneInput: string) {
                             value: relationship  // The relationship type (e.g., "Activation", "Inhibition")
                         });
                     }
+
                 }
             });
         });
@@ -91,7 +130,7 @@ export async function getGraphData(geneInput: string) {
             links: links,
         };
 
-        console.log(JSON.stringify(jsonResult, null, 2));
+        // console.log(JSON.stringify(jsonResult, null, 2));
 
         // return allGeneSymbols;
         return jsonResult;

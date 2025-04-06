@@ -2,14 +2,16 @@ body {
     margin: 0;
     font-family: 'IBM Plex Mono', monospace;
     background-color: #f5faff;
+
 }
+
+
 
 .container {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     background-color: #f5faff;
-    
 }
 
 /* Face scrollbarul alb (invizibil) pe Chrome/Safari */
@@ -44,15 +46,27 @@ body {
     /*padding: 20px;*/
 }
 
+/*.details-card {*/
+/*    width: 250px; !* mai îngust *!*/
+/*    height: 400px; !* mai înalt *!*/
+/*    background-color: #ffffff;*/
+/*    border-radius: 12px;*/
+/*    box-shadow: 0 2px 6px rgba(0,0,0,0.1);*/
+/*    padding: 20px;*/
+/*    margin-right: 2%;*/
+/*}*/
+
 .details-card {
-    width: 250px; /* mai îngust */
-    height: 90%; /* mai înalt */
+    width: 30vw; /* ocupă 30% din lățimea viewportului */
+    height: 80vh; /* 80% din înălțimea viewportului */
     background-color: #ffffff;
     border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    padding: 20px;
-    margin-right: 2%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* ușor mai proeminentă */
+    padding: 2rem;
+    margin-right: 2vw;
+    overflow-y: auto; /* scroll dacă conținutul e prea mult */
 }
+
 
 .details-card h2 {
     text-align: center;
@@ -67,24 +81,25 @@ body {
     text-align: center;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     margin-bottom: 2%;
-    margin-left: 3%;
-    margin-right: 3.5%;
+    margin-left: 1%;
+    margin-right: 1%;
+
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: left;
-    width: 90%;
+    width: 94%;
     font-family: 'IBM Plex Mono', monospace;
 }
   
 
 
   .drug-list {
-    list-style: none;
+      list-style: none;
     padding: 0;
     margin-top: 15px;
-    max-height: 350px;
+    max-height: 75vh;
     overflow-y: auto;
     scrollbar-width: none;         /* Firefox */
     -ms-overflow-style: none;      /* IE 10+ */
@@ -102,8 +117,6 @@ body {
     display: none;                 /* Chrome, Safari */
   }
 
-
- 
   
   .tabs {
     display: grid;
