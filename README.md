@@ -90,7 +90,7 @@ We are a team of five students passionate about technology, innovation, and biom
 
 | Homepage | Gene & Graph View | Gene Details | Drug Details | Chatbot |
 |----------|--------------------------|---------------------|---------|------|
-| ![Home](./imgReadMe/image.png) | ![Graph](./imgReadMe/image%20(3).png) | ![Modal](./imgReadMe/image%20(4).png) | ![Chatbot](./imgReadMe/image%20(2).png) | ![Next](./imgReadMe/image%20(1).png) |
+| ![Home](./poli_hack/imgReadMe/image.png) | ![Graph](./poli_hack/imgReadMe/image%20(3).png) | ![Modal](./poli_hack/imgReadMe/image%20(4).png) | ![Chatbot](./poli_hack/imgReadMe/image%20(2).png) | ![Next](./poli_hack/imgReadMe/image%20(1).png) |
 
 
 ---
