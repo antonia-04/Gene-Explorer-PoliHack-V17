@@ -48,7 +48,7 @@ We are a team of five students passionate about technology, innovation, and biom
 ## Application Architecture
 
 ```plaintext
-📦 root/
+root/
 │
 ├── public/
 │   ├── datasets
