@@ -1,15 +1,17 @@
 # Gene Explorer: Drug Repurposer App
 
-### PoliHack v17 – AppDev Division  
+###  1st Place – PoliHack v17 (AppDev Division)
 ---
 
 ## Overview
 
-**Gene Explorer** is a cross-platform application developed as part of **PoliHack v17**, under the **AppDev division**. Its main objective is to support researchers, bioinformaticians, and healthcare professionals in **exploring the complex relationships between human genes and pharmaceutical compounds**.
+**Gene Explorer** is a cross-platform application developed as part of **PoliHack v17**, under the **AppDev division**, where it proudly earned **1st place**. 
+
+Its main objective is to support researchers, bioinformaticians, and healthcare professionals in **exploring the complex relationships between human genes and pharmaceutical compounds**.
 
 The application is fully responsive and can be accessed seamlessly across **desktop, tablet, and mobile devices**, making it adaptable for both field work and research labs.
 
-By integrating interactive data visualizations and AI-powered tools, the platform enables users to identify promising opportunities for **drug repurposing**—the process of discovering new therapeutic uses for existing medications.
+By integrating interactive data visualizations and AI-powered tools, the platform enables users to identify promising opportunities for **drug repurposing** — the process of discovering new therapeutic uses for existing medications.
 
 ---
 
@@ -121,17 +123,41 @@ The application integrates an intelligent biomedical assistant called **Shifty**
 
 ##  Setup & Local Installation
 
-###  Clone the Repository
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/AriiSM/PoliHack_V17/tree/main
+git clone https://github.com/AriiSM/PoliHack_V17.git
 cd poli_hack
 ```
 
----
+### 2. Install Dependencies
 
-##  Setup & Local Installation
 ```bash
 npm install --legacy-peer-deps
+``` 
+
+### 3. Run the Frontend
+
+```bash
 npm run dev
 ``` 
+
+### 4. Install & Configure LM Studio (for Shifty AI features)
+
+To enable AI functionality in **Shifty**, you need to run a local LLM API using [**LM Studio**](https://lmstudio.ai/).
+
+
+#### Steps:
+
+1. **Download LM Studio** 
+2. Open the application and go to the **Models** tab.
+3. In the search bar, find and download the following model: akhilanilkumar_-_biogpt-baseline-gguf/biogpt-baseline.Q4_K_S.gguf
+4. Once the model is downloaded, navigate to the **Server** tab.
+5. Select the downloaded model and click **Start Server**.
+
+    ##### Configuration Notes:
+   - Make sure the API server runs on: `http://localhost:1234`
+   - You can leave the default settings, unless you need a custom port.
+
+    Shifty will now be able to connect and interact with the local model using this endpoint.
+
